@@ -6,7 +6,7 @@
 const char* ssid = "WFF";
 const char* password = "petersbachstrasse";
 WiFiServer server(80);
-
+bool Taster = false;
  void setup() 
 {
   Serial.begin(115200);
@@ -24,12 +24,21 @@ WiFiServer server(80);
   server.begin();
   Serial.println("Server gestartet");
   Serial.println(WiFi.localIP());
-  
+  pinMode(0,INPUT_PULLUP);
   
 }
 
 void loop() 
 {
+  int Schaltung = digitalRead(0);
+  if(Schaltung)
+  {
+    Taster = false;
+  }
+  else
+  {
+    Taster = true;  
+  }
   WiFiClient client = server.available();
   client.println("HTTP/1.1 200 OK");
   client.println("Content-Type: text/html");
@@ -42,6 +51,14 @@ void loop()
   client.println("<title>ESP8266 Temperature & Humidity DHT11 Sensor</title>");
   client.println("</head>\n<body>");
   client.println("<H2> Hallo Welt</H2>");
+  if(Taster)
+  {
+    client.println("<H3> Taster gedrückt</H3>");
+  }
+  else
+  {
+    client.println("<H3> Taster nicht gedrückt</H3>");
+  }
   client.print("</body>\n</html>");
   delay(100);
  if(client)
