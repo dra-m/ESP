@@ -6,8 +6,6 @@
 
 ## Logs von verbunden Geräten anzeigen
 
-## Anschaubare html Seite in Ordner erzeugen
-
 * Nicht nur im Arduino Code
 * Gleichzeitig Commiten von Änderungen im Code und der Beispiel html Seite
 
@@ -17,7 +15,9 @@
 * 5V Adapter um Betrieb mit Handyladegerät
 * Buchse um ESP einstecken zu können
 
+## Client.h in ESP.ino einbinden
 
-# Für Git
 
-## Git Server auf Synology NAS einrichten
+
+Überflüssig weil GitHub Konto: Git Server auf Synology NAS einrichten
+Erledigt: Anschaubare html Seite im Ordner erzeugen
